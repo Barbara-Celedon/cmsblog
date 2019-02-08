@@ -4,27 +4,28 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTagTable extends Migration
-{
+class CreatePostTagTable extends Migration {
+
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer ('tag_id')->unsigned();// foraneo
+            $table->integer ('post_id')->unsigned();// foraneo
             $table->timestamps();
-            
-           
-            
+
+
+
             //Relación
             $table->foreign('tag_id')->references('id')->on('tags')
-            ->onDelete('cascade')
+                    ->onDelete('cascade')
                     ->onUpdate('cascade');
             $table->foreign('post_id')->references('id')->on('posts')
-            ->onDelete('cascade')
+                    ->onDelete('cascade')
                     ->onUpdate('cascade');
         });
     }
@@ -34,8 +35,8 @@ class CreatePostTagTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('post_tag');
     }
+
 }
