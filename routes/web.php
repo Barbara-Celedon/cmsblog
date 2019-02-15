@@ -20,3 +20,5 @@ Route::get('blog', 'Web\PageController@blog')->name('blog');
 Route::get('blog/{slug}',
         
         'Web\PageController@post')->name('post'); 
+
+Route::get('categoria/{slug}', 'Web\PageController@category')->name('category');
