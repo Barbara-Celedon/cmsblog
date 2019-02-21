@@ -3,24 +3,28 @@
 
 <div class="container">
 
-    <div class="col-md-8">
+  
 
         <h1>Lista de Posts</h1>
 
         @foreach($posts as $post)
-        <div class="panel panel-default">
+        <div class="card mb-3">
+            @if($post->file)
+                <img src="images/posts/default_2.jpg" class="card-img-top" alt="imagen de prueba" height="200">
+            @endif
 
-            <div class="panel-heading"> 
+            <div class="card-header"> 
 
                 {{ $post->name }}
 
             </div>
 
-            <div class="panel-body">
+            <div class="card-body">
                 
                 <!-- //aca ira el codigo para la imagen (falta) -->
                 {{ $post->excerpt }}
-                <a href="{{ route('post', $post->slug) }}" class="pull-right"> Leer mas</a>
+                
+                <a href="{{ route('post', $post->slug) }}" class="btn btn-primary float-right"> Leer mas</a>
                 
             </div>
 
@@ -30,7 +34,7 @@
         @endforeach
         
         {{ $posts->render() }}
-    </div>
+   
 
 </div>
 
